@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="tg">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0a7cff">
+<title>ZEROHUBUIAL</title>
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="intro" class="intro">
+  <video id="introVideo" class="intro-video" playsinline muted preload="auto">
+    <source src="assets/intro.mp4" type="video/mp4">
+  </video>
+  <button id="skipIntro" class="glass-btn intro-skip">Гузаштан</button>
+  <div id="introFallback" class="intro-fallback">ZEROHUBUIAL</div>
+</div>
+
+<div id="app" class="app hidden">
+  <header class="topbar glass">
+    <div>
+      <div class="brand">ZEROHUBUIAL</div>
+      <div id="subtitle" class="muted">Муҳити барномасозии мобилӣ</div>
+    </div>
+    <button id="themeBtn" class="icon-btn" title="Мавзӯъ">☾</button>
+  </header>
+
+  <main id="screen" class="screen"></main>
+
+  <nav class="bottom-nav glass">
+    <button data-screen="home">⌂<span>Асосӣ</span></button>
+    <button data-screen="projects">▣<span>Лоиҳаҳо</span></button>
+    <button data-screen="chat">◉<span>AL CHAT</span></button>
+    <button data-screen="settings">⚙<span>Танзимот</span></button>
+  </nav>
+</div>
+
+<div id="modalRoot"></div>
+<div id="toastRoot" class="toast-root"></div>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
