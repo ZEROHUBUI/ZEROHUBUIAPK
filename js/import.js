@@ -1,0 +1,2 @@
+import {addFile,saveProject} from "./projects.js";
+export async function importFiles(project,fileList){for(const f of fileList){if(!f.name)continue;const text=await f.text();const path=f.webkitRelativePath||f.name;const exists=project.files.find(x=>x.path===path);if(exists)exists.content=text;else project.files.push({id:crypto.randomUUID(),path,type:"file",content:text})}await saveProject(project);return project}

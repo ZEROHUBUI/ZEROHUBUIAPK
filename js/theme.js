@@ -1,0 +1,3 @@
+import {settings,saveSettings} from "./settings.js";
+export function applyTheme(){const s=settings();document.documentElement.dataset.theme=s.theme;if(s.theme==="light"){document.documentElement.style.setProperty("--bg","#edf5ff");document.documentElement.style.setProperty("--text","#081522");document.documentElement.style.setProperty("--panel","rgba(255,255,255,.7)")}else{document.documentElement.style.setProperty("--bg","#07111f");document.documentElement.style.setProperty("--text","#eef7ff");document.documentElement.style.setProperty("--panel","rgba(18,35,58,.62)")}}
+export function toggleTheme(){const s=settings();s.theme=s.theme==="dark"?"light":"dark";saveSettings(s);applyTheme()}

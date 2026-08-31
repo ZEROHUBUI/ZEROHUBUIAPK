@@ -1,0 +1,1 @@
+export const languageFor=p=>p.endsWith(".html")?"HTML":p.endsWith(".css")?"CSS":p.endsWith(".js")?"JavaScript":p.endsWith(".json")?"JSON":p.endsWith(".xml")?"XML":p.endsWith(".md")?"Markdown":"Матн";

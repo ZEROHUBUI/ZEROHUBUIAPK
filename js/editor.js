@@ -1,0 +1,6 @@
+import {findFile,saveProject} from "./projects.js";
+export function editorView(project,file,onChange){
+let html=`<div class="editor-shell"><div class="editor-head"><b>${escapeHtml(file.path)}</b><span class="muted">Ctrl+F • Ctrl+Z • Ctrl+Y</span></div><div class="editor-wrap"><pre id="lineNums" class="lines"></pre><textarea id="codeArea" class="editor-area" spellcheck="false"></textarea></div></div>`;
+setTimeout(()=>{const a=document.querySelector("#codeArea"),n=document.querySelector("#lineNums");a.value=file.content;function lines(){n.textContent=Array.from({length:Math.max(1,a.value.split("\\n").length)},(_,i)=>i+1).join("\\n")}function sync(){file.content=a.value;saveProject(project);onChange?.();lines()}a.addEventListener("input",sync);a.addEventListener("scroll",()=>{n.scrollTop=a.scrollTop});a.addEventListener("keydown",e=>{if(e.key==="Tab"){e.preventDefault();const s=a.selectionStart;a.value=a.value.slice(0,s)+"  "+a.value.slice(a.selectionEnd);a.selectionStart=a.selectionEnd=s+2;sync()}});lines()},0);return html}
+export function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]))}
+export function lineOf(text,pos){return text.slice(0,pos).split("\\n").length}
